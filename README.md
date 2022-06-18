@@ -7,4 +7,4 @@ A text editor built upon Qt tools.
 3. PyQt5-tools
 
 #Screenshot:
-<img href="https://github.com/oron-sinaa/text-editor-qt/blob/main/Snaps/Notepad_screenshot.jpg"></img>
+("https://github.com/oron-sinaa/text-editor-qt/blob/main/Snaps/Notepad_screenshot.jpg")
