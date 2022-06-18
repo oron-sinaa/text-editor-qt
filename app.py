@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtWidgets import (
-    QApplication, QDialog, QMainWindow, QMessageBox
+    QApplication, QDialog, QMainWindow, QMessageBox, QPlainTextEdit
 )
 
 from PyQt5.uic import loadUi
@@ -13,12 +13,13 @@ class Window(QMainWindow, Ui_MainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.editor = QPlainTextEdit()
         self.connectSignalsSlots()
 
     def connectSignalsSlots(self):
-        self.ui.action_New.triggered.connect(self.create_file)
-        self.ui.action_Open.triggered.connect(self.open_file)
-        self.ui.actionSave.triggered.connect(self.save_file)
+        # self.ui.action_New.triggered.connect(self.create_file)
+        # self.ui.action_Open.triggered.connect(self.open_file)
+        # self.ui.actionSave.triggered.connect(self.save_file)
         self.ui.actionCut.triggered.connect(self.editor.cut)
         self.ui.actionCopy.triggered.connect(self.editor.copy)
         self.ui.actionPaste.triggered.connect(self.editor.paste)
