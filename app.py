@@ -13,7 +13,7 @@ class Window(QMainWindow, Ui_MainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.editor = QPlainTextEdit()
+        self.editor = self.ui.textEdit
         self.connectSignalsSlots()
 
     def connectSignalsSlots(self):
