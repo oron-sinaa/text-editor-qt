@@ -1,4 +1,4 @@
-# text-editor-qt
+# Text Editor
 A text editor built upon Qt tools.
 
 # Requirements:
