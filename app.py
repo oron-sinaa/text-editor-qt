@@ -3,8 +3,9 @@ import sys, os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox, QLabel)
 from PyQt5.QtGui import QFontDatabase
 from PyQt5 import QtGui
-
 from PyQt5.uic import loadUi
+
+import qdarktheme
 
 from ui_main import Ui_MainWindow
 
@@ -12,6 +13,7 @@ class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
+        app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
         self.ui.setupUi(self)
         # path is none until file is open or saved
         self.path = None
@@ -44,8 +46,9 @@ class Window(QMainWindow, Ui_MainWindow):
         self.ui.actionUndo_2.triggered.connect(self.editor.undo)
         self.ui.actionRedo.triggered.connect(self.editor.redo)
         self.ui.actionRedo_2.triggered.connect(self.editor.redo)
+        self.ui.actionDark_Light.triggered.connect(self.set_theme)
         self.ui.actionAbout.triggered.connect(self.show_about_dialog)
-        self.ui.actionExit.triggered.connect(lambda: self.exit_app)
+        self.ui.actionExit.triggered.connect(self.exit_app)
 
     def file_open(self):
         # getting path and define file type (returns tuple)
@@ -104,7 +107,6 @@ class Window(QMainWindow, Ui_MainWindow):
             "{} - PyQt5 Notepad".format((os.path.basename(self.path) if self.path else "Untitled"))
         )
 
-    # FIXME: #1 add details and hyperlink to github.com/oron-sinaa/text-editor-qt at Hmm
     def show_about_dialog(self):
         QMessageBox.about(
             self,
@@ -116,6 +118,13 @@ class Window(QMainWindow, Ui_MainWindow):
             "<a href = 'https://github.com/oron-sinaa/text-editor-qt'>github repository</a> 🔗",
         )
  
+    def set_theme(self):
+        print("here")
+        if self.ui.actionDark_Light.isChecked():
+            app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
+        else:
+            app.setStyleSheet(qdarktheme.load_stylesheet("light"))
+
     def exit_app(self):
         reply = QMessageBox.question(
             self, 'Exit Editor?', 'Are you sure you want to exit QtPad?', 
