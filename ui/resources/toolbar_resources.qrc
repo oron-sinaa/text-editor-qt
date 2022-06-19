@@ -1,12 +1,12 @@
 <RCC>
   <qresource prefix="tooldbar_images">
+    <file>mode_dark.svg</file>
+    <file>mode_light.svg</file>
     <file>about_dark.svg</file>
     <file>about_light.svg</file>
     <file>copy_dark.svg</file>
     <file>copy_light.svg</file>
     <file>icon.png</file>
-    <file>mode_dark.png</file>
-    <file>mode_light.png</file>
     <file>new_dark.svg</file>
     <file>new_light.svg</file>
     <file>open_dark.svg</file>
