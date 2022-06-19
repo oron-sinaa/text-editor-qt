@@ -12,4 +12,4 @@ python app.py
 ```
 
 ### Screenshot
-![QtPad screenshot](https://github.com/oron-sinaa/text-editor-qt/blob/main/snaps/light_mode_ss.jpg)
+![QtPad screenshot](https://github.com/oron-sinaa/text-editor-qt/blob/main/snaps/dark_mode_ss.jpg)
