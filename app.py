@@ -32,17 +32,17 @@ class Window(QMainWindow, Ui_MainWindow):
         self.ui.actionSave.triggered.connect(self.file_save)
         self.ui.actionSave_2.triggered.connect(self.file_save)
         self.ui.actionSave_As.triggered.connect(self.file_save_as)
-        # TODO: add save as to file menu
+        self.ui.actionSaveAs_2.triggered.connect(self.file_save_as)
         self.ui.actionCut.triggered.connect(self.editor.cut)
         self.ui.actionCut_2.triggered.connect(self.editor.cut)
         self.ui.actionCopy.triggered.connect(self.editor.copy)
         self.ui.actionCopy_2.triggered.connect(self.editor.copy)
         self.ui.actionPaste.triggered.connect(self.editor.paste)
         self.ui.actionPaste_2.triggered.connect(self.editor.paste)
-        # TODO: add undo to file menu
         self.ui.actionUndo.triggered.connect(self.editor.undo)
-        # TODO: add redo to file menu
+        self.ui.actionUndo_2.triggered.connect(self.editor.undo)
         self.ui.actionRedo.triggered.connect(self.editor.redo)
+        self.ui.actionRedo_2.triggered.connect(self.editor.redo)
         self.ui.actionExit.triggered.connect(lambda: self.exit_app())
 
     def file_open(self):
@@ -90,7 +90,6 @@ class Window(QMainWindow, Ui_MainWindow):
             self.path = path
             self.update_title()
         
-
     def dialog_critical(self, e):
         dlg = QMessageBox(self)
         # setting exception text to the dialog
