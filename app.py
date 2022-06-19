@@ -28,13 +28,22 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def connectSignalsSlots(self):
         self.ui.action_Open.triggered.connect(self.file_open)
+        self.ui.actionOpen.triggered.connect(self.file_open)
         self.ui.actionSave.triggered.connect(self.file_save)
+        self.ui.actionSave_2.triggered.connect(self.file_save)
         self.ui.actionSave_As.triggered.connect(self.file_save_as)
+        # TODO: add save as to file menu
         self.ui.actionCut.triggered.connect(self.editor.cut)
+        self.ui.actionCut_2.triggered.connect(self.editor.cut)
         self.ui.actionCopy.triggered.connect(self.editor.copy)
+        self.ui.actionCopy_2.triggered.connect(self.editor.copy)
         self.ui.actionPaste.triggered.connect(self.editor.paste)
+        self.ui.actionPaste_2.triggered.connect(self.editor.paste)
+        # TODO: add undo to file menu
         self.ui.actionUndo.triggered.connect(self.editor.undo)
+        # TODO: add redo to file menu
         self.ui.actionRedo.triggered.connect(self.editor.redo)
+        self.ui.actionExit.triggered.connect(lambda: self.exit_app())
 
     def file_open(self):
         # getting path and define file type (returns tuple)
@@ -93,6 +102,16 @@ class Window(QMainWindow, Ui_MainWindow):
         self.setWindowTitle(
             "{} - PyQt5 Notepad".format((os.path.basename(self.path) if self.path else "Untitled"))
         )
+
+    def exit_app(self):
+        reply = QMessageBox.question(
+            self, 'Exit Editor?', 'Are you sure you want to exit QtPad?', 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+                self.close()
+        else:
+            pass
 
 
 if __name__ == "__main__":
