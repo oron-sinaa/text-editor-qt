@@ -1,6 +1,6 @@
 import sys, os
 
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox, QLabel)
 from PyQt5.QtGui import QFontDatabase
 from PyQt5 import QtGui
 
@@ -15,9 +15,10 @@ class Window(QMainWindow, Ui_MainWindow):
         self.ui.setupUi(self)
         # path is none until file is open or saved
         self.path = None
-        # TODO: shift to UI later
         self.setWindowTitle("Untitled - QtPad")
         self.setWindowIcon(QtGui.QIcon("ui\\resources\\icon.png"))
+        # template for any hyperlink to be used
+        self.link_template = "<a href={0}>{1}</a>"
         # make an instance of textEdit widget for further use
         self.editor = self.ui.textEdit
         # setting default font
@@ -43,7 +44,8 @@ class Window(QMainWindow, Ui_MainWindow):
         self.ui.actionUndo_2.triggered.connect(self.editor.undo)
         self.ui.actionRedo.triggered.connect(self.editor.redo)
         self.ui.actionRedo_2.triggered.connect(self.editor.redo)
-        self.ui.actionExit.triggered.connect(lambda: self.exit_app())
+        self.ui.actionAbout.triggered.connect(self.show_about_dialog)
+        self.ui.actionExit.triggered.connect(lambda: self.exit_app)
 
     def file_open(self):
         # getting path and define file type (returns tuple)
@@ -102,6 +104,18 @@ class Window(QMainWindow, Ui_MainWindow):
             "{} - PyQt5 Notepad".format((os.path.basename(self.path) if self.path else "Untitled"))
         )
 
+    # FIXME: #1 add details and hyperlink to github.com/oron-sinaa/text-editor-qt at Hmm
+    def show_about_dialog(self):
+        QMessageBox.about(
+            self,
+            "About QtPad v1.0",
+            "<b>A text editor built using:</b>"
+            "<li>- PyQt5</li>"
+            "<li>- Qt Designer</li>"
+            "<li>- Python</li>"
+            "<a href = 'https://github.com/oron-sinaa/text-editor-qt'>github repository</a> 🔗",
+        )
+ 
     def exit_app(self):
         reply = QMessageBox.question(
             self, 'Exit Editor?', 'Are you sure you want to exit QtPad?', 
