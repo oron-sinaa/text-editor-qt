@@ -2,9 +2,9 @@
 A text editor built upon Qt tools.
 
 ### Requirements
-<li>PyQt5==5.15.6</li>
-<li>pyqt5-tools==5.15.4.3.2</li>
-<li>python==3.8.8</li>
+- PyQt5==5.15.6
+- pyqt5-tools==5.15.4.3.2
+- python==3.8.8
 
 ### Execute
 ```
